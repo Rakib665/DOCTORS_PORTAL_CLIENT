@@ -7,7 +7,7 @@ const Appointment = () => {
     const [date,setDate] = useState(new Date())
 
     return (
-        <div>
+        <div className='px-6'>
             <MakeAppointment date={date} setDate={setDate}></MakeAppointment>
             <AvailableAppoinment date={date}></AvailableAppoinment>
             <Footer></Footer>
