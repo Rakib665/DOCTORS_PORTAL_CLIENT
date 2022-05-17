@@ -30,7 +30,7 @@ const Testimonials = () => {
         },
     ]
     return (
-        <section className='mt-2'>
+        <section className='mt-2 container-fluid'>
             <div className='flex justify-between '>
                 <div className='mt-2 '>
                     <h2 className='text-primary font-bold text-xl'>Testimonial</h2>
