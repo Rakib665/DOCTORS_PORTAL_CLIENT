@@ -2,7 +2,7 @@ import React from 'react';
 import { format } from 'date-fns';
 
 
-const BookingAppointment = ({ treatment, date }) => {
+const BookingAppointment = ({ treatment, date ,setTreatment}) => {
     const {name,slots} = treatment
     const handleBooking = event => {
         event.preventDefault()
@@ -10,18 +10,19 @@ const BookingAppointment = ({ treatment, date }) => {
         const email = event.target.email.value
         const phone = event.target.phone.value
         console.log(name,email,phone)
+        setTreatment(null)
     }
     return (
         <div>
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label for="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
                     <h3 className="font-bold text-lg text-secondary">Book appointment for {name}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-2 justify-items-center'>
-                        <input type="text" placeholder="Type here" value={format(date, 'PP')} className="input input-bordered w-full max-w-xs" />
-                        <select className="select select-bordered w-full max-w-xs">
+                        <input type="text" placeholder="Type here" value={format(date, 'PP')} readOnly className="input input-bordered w-full max-w-xs" />
+                        <select className="select select-bordered w-full max-w-xs" >
                           {
                               slots.map(slot => <option value={slot}> {slot}</option>)
                           }
