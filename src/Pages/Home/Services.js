@@ -41,12 +41,12 @@ const Services = () => {
             </div>
 
             <div className='px-20 mt-1'>
-                <div class="hero min-h-screen ">
-                    <div class="hero-content flex-col lg:flex-row">
+                <div className="hero min-h-screen ">
+                    <div className="hero-content flex-col lg:flex-row">
                         <img className='img' src={treatment} />
                         <div>
-                            <h1 class="text-5xl font-bold">Box Office News!</h1>
-                            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                            <h1 className="text-5xl font-bold">Box Office News!</h1>
+                            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                             <PrimaryButton>Get Started</PrimaryButton>
                         </div>
                     </div>
