@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { error } from 'daisyui/src/colors/colorNames';
 
 
-const BookingAppointment = ({ treatment, date ,setTreatment}) => {
+const BookingAppointment = ({ treatment, date ,setTreatment,refetch}) => {
     const [user]= useAuthState(auth)
     const {_id,name,slots} = treatment
     const formattedDate = format(date, 'PP')
@@ -41,6 +41,7 @@ const BookingAppointment = ({ treatment, date ,setTreatment}) => {
             else(
                 toast.error(`Already have an appointment on ${data.booking?.date} at ${data.booking?.slot}`)
             )
+            refetch()
             setTreatment(null)
 
         })
