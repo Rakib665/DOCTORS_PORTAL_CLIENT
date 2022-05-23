@@ -11,12 +11,12 @@ const AvailableAppoinment = ({ date }) => {
 
     const formattedDate = format(date, 'PP')
 
-    const { data:services, isLoading,refetch } = useQuery(['available', formattedDate], () =>
+    const { data: services, isLoading, refetch } = useQuery(['available', formattedDate], () =>
         fetch(`http://localhost:5000/available?date=${formattedDate}`)
             .then(res => res.json())
     )
 
-    if(isLoading){
+    if (isLoading) {
         return <Loading></Loading>
     }
     // useEffect(()=>{
@@ -36,11 +36,11 @@ const AvailableAppoinment = ({ date }) => {
                     ></Service>)
                 }
             </div>
-            {treatment && <BookingAppointment 
-            treatment={treatment} 
-            key={treatment._id} date={date} 
-            setTreatment={setTreatment}
-            refetch={refetch}
+            {treatment && <BookingAppointment
+                treatment={treatment}
+                key={treatment._id} date={date}
+                setTreatment={setTreatment}
+                refetch={refetch}
             ></BookingAppointment>}
         </div>
     );

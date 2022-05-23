@@ -1,9 +1,10 @@
 import { async } from '@firebase/util';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import Loading from '../Loading';
 
 
@@ -19,6 +20,8 @@ const SIgnUp = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
+
+      const [token] = useToken(user || gUser)
       
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
@@ -26,10 +29,12 @@ const SIgnUp = () => {
 
     
     let errorMessage;
-    if(user || gUser){
-        
-        // console.log(user)
+   useEffect(()=>{
+    if(token){
+        navigate('/appointment')
+
     }
+   },[token])
 
     if (loading || gLoading || updating) {
         return <Loading></Loading>
@@ -49,7 +54,6 @@ const SIgnUp = () => {
        await createUserWithEmailAndPassword(data.email, data.password)
        await updateProfile({displayName: data.name})
        console.log('update successfully')
-       navigate('/home')
     //    console.log(data)
 
     };
